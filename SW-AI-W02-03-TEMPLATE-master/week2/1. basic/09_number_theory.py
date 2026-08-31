@@ -25,80 +25,51 @@
 """
 
 def gcd(a, b):
-    """
-    유클리드 호제법을 사용한 최대공약수 계산
-    
-    Args:
-        a, b: 두 양의 정수
-    
-    Returns:
-        최대공약수
-    """
-    # TODO: 유클리드 호제법 구현
-    # base case: b가 0이면 a 반환
-    # recursive를 이용 
-    pass
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
 
 def gcd_iterative(a, b):
-    """
-    반복문을 사용한 최대공약수 계산
-    
-    Args:
-        a, b: 두 양의 정수
-    
-    Returns:
-        최대공약수
-    """
-    # TODO: 반복문으로 구현
-    # b가 0이 될 때까지 반복
-    pass
+    while b != 0:
+        a, b = b, a % b
+    return a
+
 
 def lcm(a, b):
-    """
-    최소공배수 계산
-    
-    Args:
-        a, b: 두 양의 정수
-    
-    Returns:
-        최소공배수
-    """
-    # TODO: LCM 계산
-    pass
+    return a * b // gcd(a, b)
+
 
 def extended_gcd(a, b):
-    """
-    확장 유클리드 호제법
-    ax + by = gcd(a, b)를 만족하는 x, y를 찾음
-    
-    Args:
-        a, b: 두 양의 정수
-    
-    Returns:
-        (gcd, x, y) 튜플
-    """
-    # TODO: 확장 유클리드 호제법 구현
-    # base case: b가 0이면 (a, 1, 0) 반환    
-    # recursive case
-    # 역추적하며 x, y 계산
-    pass
+    if b == 0:
+        return a, 1, 0
 
-def is_prime(n):
-    """
-    소수 판별
-    
-    Args:
-        n: 판별할 양의 정수
-    
-    Returns:
-        소수이면 True, 아니면 False
-    """
-    # TODO: 소수 판별 구현
-    # n이 2보다 작으면 False
-    # 2부터 sqrt(n)까지 나누어 떨어지는지 확인    
-    # 3부터 sqrt(n)까지 홀수만 확인
-    pass 
+    g, x1, y1 = extended_gcd(b, a % b)
 
+    x = y1
+    y = x1 - (a // b) * y1
+
+    return g, x, y
+
+
+def is_prime(num):
+    if num < 2:
+        return False
+
+    if num == 2:
+        return True
+
+    if num % 2 == 0:
+        return False
+
+    test_numbers = 3
+
+    while test_numbers * test_numbers <= num:
+        if num % test_numbers == 0:
+            return False
+        test_numbers += 2
+
+    return True
 # 테스트 케이스
 if __name__ == "__main__":
     # 테스트 케이스 1: GCD와 LCM
@@ -143,5 +114,4 @@ if __name__ == "__main__":
     for num in test_numbers:
         result = "소수" if is_prime(num) else "합성수"
         print(f"{num}: {result}")
-
 

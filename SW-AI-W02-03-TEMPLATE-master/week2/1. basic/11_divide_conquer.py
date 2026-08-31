@@ -24,7 +24,24 @@
 """
 
 def find_max_divide_conquer(arr, left, right):
-    """
+    # 원소가 하나만 남은 경우
+    if left == right:
+        return arr[left]
+
+    mid = (left + right) // 2
+
+    # 왼쪽에서 최댓값 찾기
+    left_max = find_max_divide_conquer(arr, left, mid)
+
+    # 오른쪽에서 최댓값 찾기
+    right_max = find_max_divide_conquer(arr, mid + 1, right)
+
+    # 두 구간의 최댓값 비교
+    return max(left_max, right_max)
+
+
+
+"""
     분할 정복으로 최댓값 찾기
     
     Args:
@@ -34,21 +51,21 @@ def find_max_divide_conquer(arr, left, right):
     
     Returns:
         최댓값
-    """
+"""
     # TODO: base case - 원소가 하나면 그 값 반환
-    pass
+
     
     # TODO: 중간 지점 계산
-    pass
+
     
     # TODO: 왼쪽 절반의 최댓값
-    pass
+    
         
     # TODO: 오른쪽 절반의 최댓값
-    pass
+
     
     # TODO: 둘 중 큰 값 반환
-    pass
+
 
 # 테스트 케이스
 if __name__ == "__main__":

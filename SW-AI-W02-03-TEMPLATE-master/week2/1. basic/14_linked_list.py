@@ -92,6 +92,7 @@ print_list() 가 해야 할 일:
 """
 
 class Node:
+    
     """
     연결 리스트의 노드 (한 칸 = 데이터 + 다음 화살표)
 
@@ -105,6 +106,7 @@ class Node:
 
 
 class LinkedList:
+
     """
     단순 연결 리스트 (Singly Linked List)
 
@@ -114,6 +116,7 @@ class LinkedList:
         self.head = None
 
     def append(self, data):
+
         """
         리스트 끝에 노드 추가
 
