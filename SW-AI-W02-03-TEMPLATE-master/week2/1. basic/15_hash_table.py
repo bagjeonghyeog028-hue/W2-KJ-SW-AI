@@ -38,16 +38,20 @@ def manage_grades(students):
         students: {이름: 점수} 딕셔너리
     
     Returns:
-        평균, 최고점 학생 이름, 최고점
+        평균, 최고점 학생 이름(리스트), 최고점
     """
-    # TODO: 평균 점수 계산
-    pass
+    if not students:
+        return 0.0, [], 0
+
+    # 1. 평균 점수 계산
+    average = sum(students.values()) / len(students)
     
-    
-    # TODO: 최고 점수 학생 찾기
-    pass
+    # 2. 최고 점수 및 해당 학생 찾기
+    top_score = max(students.values())
+    top_student = [name for name, score in students.items() if score == top_score]
     
     return average, top_student, top_score
+
 
 def find_student_score(students, name):
     """
@@ -60,9 +64,8 @@ def find_student_score(students, name):
     Returns:
         점수 (없으면 None)
     """
-    # TODO: students에서 name 찾기
-    pass
-
+    # 딕셔너리에서 key(이름)에 해당하는 value(점수) 반환 (없으면 None 반환)
+    return students.get(name)
 # 테스트 케이스
 if __name__ == "__main__":
     # 테스트 케이스 1
@@ -76,7 +79,7 @@ if __name__ == "__main__":
     print("=== 학생 성적 관리 ===")
     avg, top_name, top_score = manage_grades(students1)
     print(f"평균 점수: {avg}")
-    print(f"최고 점수: {top_name} ({top_score}점)")
+    print(f"최고 점수: {', '.join(top_name)} ({top_score}점)")
     print()
     
     # 테스트 케이스 2: 학생 조회
