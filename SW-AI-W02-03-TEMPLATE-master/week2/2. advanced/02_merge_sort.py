@@ -23,6 +23,9 @@
 """
 
 def merge(arr, left, mid, right):
+    temp = []
+    i = left
+    j = mid + 1
     """
     두 개의 정렬된 부분 배열을 병합하는 함수
     
@@ -33,19 +36,24 @@ def merge(arr, left, mid, right):
         right: 오른쪽 부분의 끝 인덱스
     """
     # TODO: 왼쪽과 오른쪽 부분 배열을 임시 배열로 복사
-    pass
-    
+    for k in range(left, right + 1):
+        if i <= mid and (j > right or arr[i] <= arr[j]):
+            temp.append(arr[i])
+            i += 1
+        else:
+            temp.append(arr[j])
+            j += 1
+
     # TODO: 두 배열을 병합
-    pass
-    
-    
-    # TODO: left_arr와 right_arr를 비교하며 작은 값을 arr에 복사
-    pass
-    
-    # TODO: 남은 원소들을 복사
-    # left_arr에 남은 원소가 있으면 복사
-    # right_arr에 남은 원소가 있으면 복사
-    pass
+    while i <= mid:
+        temp.append(arr[i])
+        i += 1
+    while j <= right:
+        temp.append(arr[j])
+        j += 1
+    arr[left:right + 1] = temp
+
+
 
 def merge_sort_helper(arr, left, right):
     """
@@ -61,7 +69,12 @@ def merge_sort_helper(arr, left, right):
     ## 왼쪽 절반 재귀 정렬
     ## 오른쪽 절반 재귀 정렬
     ## 정렬된 두 절반을 병합
-    pass
+    if left >= right:
+        return
+    mid = (left+right) // 2
+    merge_sort_helper(arr, left, mid)
+    merge_sort_helper(arr, mid + 1, right)
+    merge(arr, left, mid, right)
 
 def merge_sort(arr):
     """
