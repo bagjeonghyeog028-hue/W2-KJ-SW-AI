@@ -54,21 +54,24 @@ N = 8 -> 92      (전통적인 "8-Queens 문제" 의 답)
 - row 가 N 에 도달했다는 것은 모든 행을 무사히 채웠다는 의미이므로 1가지 경우.
 """
 
+def n_queens (n, col):
+    n = len(col) -1
+    if (promising(i, col)):
+        if (i == n):
+            print(col[1: n+1])
+        else:
+            for j in range(1, n+1):
+                col[i+1] = j
+                n_queens(i+1, col)
 
-def n_queens(n: int) -> int:
-    """
-    N x N 체스판에 N 개의 퀸을 서로 공격하지 않도록 배치하는 경우의 수를 반환.
-    1 <= N <= 8 범위에서 동작하면 충분합니다.
-    """
-    # TODO: 백트래킹으로 가능한 배치의 수를 반환하세요.
-    # 권장 구조:
-    #   cols = [0] * n
-    #   count = 0
-    #   def place(row):
-    #       ...
-    #   place(0)
-    #   return count
-    pass
+def promising (n, col):
+    k = 1
+    n = True
+    while (k < i and n):
+        if (col[i] == col[k] or abs(col[i] - col[k]) == (i - k)):
+            n = False
+        k += 1
+    return n
 
 
 if __name__ == "__main__":
