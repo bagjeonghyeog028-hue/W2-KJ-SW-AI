@@ -1,31 +1,7 @@
-"""
-[퀵 정렬 구현]
-
-문제 설명:
-- 퀵 정렬(Quick Sort) 알고리즘을 구현합니다.
-- 분할 정복(Divide and Conquer) 방식을 사용합니다.
-- 피벗(pivot)을 기준으로 작은 값과 큰 값을 분할하여 재귀적으로 정렬합니다.
-
-입력:
-- arr: 정렬되지 않은 정수 배열
-
-출력:
-- 오름차순으로 정렬된 배열
-
-예제:
-입력: [10, 7, 8, 9, 1, 5]
-출력: [1, 5, 7, 8, 9, 10]
-
-힌트:
-- 피벗 선택 (일반적으로 마지막 원소)
-- 피벗보다 작은 원소는 왼쪽, 큰 원소는 오른쪽으로 분할
-- 재귀적으로 왼쪽과 오른쪽 부분 정렬
-"""
-
 def partition(arr, low, high):
     pivot = arr[(low + high) // 2]
-
     while low <= high:
+        
         while arr[low] < pivot:
             low += 1
 
@@ -36,17 +12,13 @@ def partition(arr, low, high):
             arr[low], arr[high] = arr[high], arr[low]
             low += 1
             high -= 1
-
     return low
-
 
 def quick_sort_helper(arr, low, high):
     if low < high:
         pi = partition(arr, low, high)
-
         quick_sort_helper(arr, low, pi - 1)
         quick_sort_helper(arr, pi, high)
-
 
 def quick_sort(arr):
     quick_sort_helper(arr, 0, len(arr) - 1)

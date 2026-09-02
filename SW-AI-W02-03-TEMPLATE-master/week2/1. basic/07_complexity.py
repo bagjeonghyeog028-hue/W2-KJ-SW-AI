@@ -1,35 +1,4 @@
-"""
-[복잡도 분석 - Big O, 시간 복잡도, 공간 복잡도]
-
-문제 설명:
-- 여러 알고리즘의 시간 복잡도와 공간 복잡도를 이해하고 비교합니다.
-- 동일한 문제를 다른 복잡도로 해결하는 방법을 학습합니다.
-- 배열에서 중복 원소를 찾는 문제를 여러 방법으로 구현합니다.
-
-입력:
-- nums: 정수 배열
-
-출력:
-- 중복된 원소들의 리스트
-
-예제:
-입력: [4, 3, 2, 7, 8, 2, 3, 1]
-출력: [2, 3]
-
-힌트:
-- 방법1: 이중 반복문 (O(n²) 시간, O(1) 공간)
-- 방법2: 정렬 후 탐색 (O(n log n) 시간, O(1) 공간)
-- 방법3: 해시 집합 사용 (O(n) 시간, O(n) 공간)
-"""
-
-
-
 def find_duplicates_brute_force(nums):
-    """
-    방법1: 이중 반복문 사용
-    시간 복잡도: O(n²)
-    공간 복잡도: O(k) - k는 중복 원소 개수
-    """
     dupe = []
     
     n = len(nums)
@@ -45,41 +14,21 @@ def find_duplicates_brute_force(nums):
         if find :
             if nums[i] not in dupe : 
                 dupe.append(nums[i])
-
-    
-
-    
     return dupe
 
 def find_duplicates_sorting(nums):
-    """
-    방법2: 정렬 후 인접 원소 비교
-    시간 복잡도: O(n log n) - 정렬
-    공간 복잡도: O(1) - 정렬을 in-place로 수행
-    """
     if not nums:
         return []
-    
     nums.sort()
-    
     dupe = []
-    
     for i in range(len(nums)-1) :
         cur = nums[i]
-        
-        
+
         if (cur == nums[i+1] and cur not in dupe) : 
             dupe.append(cur)
-            
-        
     return dupe
 
 def find_duplicates_hash(nums):
-    """
-    방법3: 해시 집합 사용
-    시간 복잡도: O(n)
-    공간 복잡도: O(n)
-    """
     seen = set()
     duplicates = set()
     nu = 0
@@ -92,8 +41,6 @@ def find_duplicates_hash(nums):
                 duplicates.add(i)
             else :
                 seen.add(i)
-
-    
     return list(duplicates)
 
 def measure_time(func, nums, method_name):

@@ -1,64 +1,16 @@
-"""
-[큐 - 프린터 대기열]
-
-문제 설명:
-- 큐(Queue)를 사용하여 프린터 작업을 순서대로 처리합니다.
-- FIFO (First In First Out) 구조를 활용합니다.
-
-입력:
-- jobs: 인쇄 작업 리스트 (예: ["문서A", "문서B", "문서C"])
-
-출력:
-- 작업이 처리되는 순서
-
-예제:
-입력: ["문서A", "문서B", "문서C"]
-출력:
-처리: 문서A
-처리: 문서B
-처리: 문서C
-
-힌트:
-- 파이썬에서는 리스트로 큐 구현 가능
-- append(): 뒤에 추가 (enqueue)
-- pop(0): 앞에서 제거 (dequeue)
-"""
-
 from collections import deque
 queue = deque()
-
-    # """
-    # 프린터 작업을 순서대로 처리
-    
-    # Args:
-    #     jobs: 작업 리스트
-    
-    # Returns:
-    #     처리된 작업 리스트
-    # """
-    # # TODO: deque로 큐 생성
-    
 processed = []
-    
-from collections import deque
 
 def process_print_queue(jobs):
-    # deque로 큐 생성
-    queue = deque(jobs)
-
-    # 처리된 작업을 저장할 리스트
-    processed = []
-
-    # 큐가 빌 때까지 반복
-    while queue:
-        # 큐에서 작업 꺼내기 (dequeue)
-        job = queue.popleft()
-
-        # 작업 처리
-        print(f"처리: {job}")
+    queue = deque(jobs)  # deque로 큐 생성
+    processed = []  # 처리된 작업을 저장할 리스트 
+    while queue:  # 큐가 빌 때까지 반복
+        job = queue.popleft()  # 큐에서 작업 꺼내기 (dequeue)
+        print(f"처리: {job}")  # 작업 처리
         processed.append(job)
-
     return processed
+    
 # 테스트 케이스
 if __name__ == "__main__":
     # 테스트 케이스 1

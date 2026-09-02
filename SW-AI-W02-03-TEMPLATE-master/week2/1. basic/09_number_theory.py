@@ -1,56 +1,24 @@
-"""
-[정수론 - 최대공약수(GCD)와 최소공배수(LCM)]
-
-문제 설명:
-- 두 정수의 최대공약수(GCD)와 최소공배수(LCM)를 구합니다.
-- 유클리드 호제법을 사용하여 GCD를 효율적으로 계산합니다.
-- GCD를 이용하여 LCM을 계산합니다.
-
-입력:
-- a, b: 두 개의 양의 정수
-
-출력:
-- GCD: 최대공약수
-- LCM: 최소공배수
-
-예제:
-입력: a = 48, b = 18
-출력: 
-  GCD = 6
-  LCM = 144
-
-힌트:
-- 유클리드 호제법: gcd(a, b) = gcd(b, a % b)
-- LCM 공식: lcm(a, b) = (a × b) / gcd(a, b)
-"""
-
 def gcd(a, b):
     if b == 0:
         return a
     return gcd(b, a % b)
-
 
 def gcd_iterative(a, b):
     while b != 0:
         a, b = b, a % b
     return a
 
-
 def lcm(a, b):
     return a * b // gcd(a, b)
-
 
 def extended_gcd(a, b):
     if b == 0:
         return a, 1, 0
 
     g, x1, y1 = extended_gcd(b, a % b)
-
     x = y1
     y = x1 - (a // b) * y1
-
     return g, x, y
-
 
 def is_prime(num):
     if num < 2:
@@ -63,13 +31,13 @@ def is_prime(num):
         return False
 
     test_numbers = 3
-
     while test_numbers * test_numbers <= num:
         if num % test_numbers == 0:
             return False
-        test_numbers += 2
 
+        test_numbers += 2
     return True
+    
 # 테스트 케이스
 if __name__ == "__main__":
     # 테스트 케이스 1: GCD와 LCM
