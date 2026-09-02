@@ -1,7 +1,9 @@
 def is_palindrome(s):
+    #문자열 s에서 글자를 하나씩 꺼내(c), 알파벳이나 숫자일 때만(isalnum) 가져와서 소문자로 바꾸고(lower), 그 결과들을 모아서 s에 새 리스트로 저장한다."
     s = [c.lower() for c in s if c.isalnum()]
-    return s == s[::-1]
 
+    # 변환된 리스트(s)가 뒤집은 리스트(s[::-1])와 동일한지 비교 후.(True/False)를 반환.
+    return s == s[::-1]
 
 # 테스트 케이스
 if __name__ == "__main__":
