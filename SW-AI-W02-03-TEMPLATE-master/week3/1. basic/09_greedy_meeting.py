@@ -10,10 +10,10 @@ def select_meetings(meetings):
 
     for start, end in meetings:
         
-        if start >= let:
-            selected.append((start, end))
-            count += 1
-            let = end
+        if start >= let: #끝난 시간보다 시작한 시간이 커야됨.
+            selected.append((start, end)) #선택한 회의 리스트에 추가
+            count += 1  # 배정된 회의 개수
+            let = end #회의 끝날 시간 == 회의 끝나는 시간.
 
 
     return count,selected
