@@ -47,37 +47,3 @@ if __name__ == "__main__":
         print(f"{coin}원: {count}개")
     print(f"총 {total}개")
 
-"""
-내가 한거.
-def make_change_greedy(change, coins):
-    a = 0
-    b = 0
-    c = 0
-    d = 0
-
-    while change > 0:
-        if coins[0] <= change:
-            change -= coins[0]
-            a += 1
-        elif coins[1] <= change:
-            change -= coins[1]
-            b += 1
-        elif coins[2] <= change:
-            change -= coins[2]
-            c += 1
-        elif coins[3] <= change:
-            change -= coins[3]
-            d += 1
-        else:
-            break
-    result = {}
-    total_coins = 0
-    total_coins = {
-    coins[0] : a,
-    coins[1] : b,
-    coins[2] : c,
-    coins[3] : d
-    }
-    result = a + b + c + d
-    return result,total_coins
-"""
