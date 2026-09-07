@@ -1,8 +1,34 @@
-import heapq
-#이진 힙
+import heapq  #이진 힙 사용
+ 
 INF = float('inf')  #or `NaN = float('nan')`
 
 def dijkstra(n: int, edges: list, start: int) -> list:
+    graph = [[] for _ in range(n)]
+    for u, v, w in edges:
+        graph[u].append((v, w))
+    
+    dist = [INF] * (n)
+    dist[start] = 0
+    
+    di_queue = []
+    heapq.heappush(di_queue, (0, start))  # (거리, 노드)
+    
+    while di_queue:
+        current_dist, current_node = heapq.heappop(di_queue)
+        
+        # 이미 처리된 노드라면 건너뜀
+        if current_dist > dist[current_node]:
+            continue
+            
+        # 인접 노드 확인
+        for adjacent, weight in graph[current_node]:
+            new_dist = current_dist + weight
+            
+            # 더 짧은 경로를 찾은 경우 업데이트 및 큐에 삽입
+            if new_dist < dist[adjacent]:
+                dist[adjacent] = new_dist
+                heapq.heappush(di_queue, (new_dist, adjacent))
+    return dist
 
     #n: 정점 수 (정점 번호 0 ~ n-1)
     #edges: (u, v, w) 형식 방향 간선 리스트
@@ -14,10 +40,9 @@ def dijkstra(n: int, edges: list, start: int) -> list:
     # TODO: 우선순위 큐(heapq)로 BFS-like 최단경로 탐색
     # TODO: dist 반환
     
-    graph
-#무방향 그래프: 정점 u와 v가 연결되어 있다면, u의 리스트에 v를 추가하고, v의 리스트에도 u를 추가합니다.
-#방향 그래프: 정점 u에서 v로 가는 간선만 있다면, u의 리스트에만 v를 추가합니다.
-#가중치 그래프: 연결된 정점 번호와 함께 간선의 가중치(Cost)를 쌍(Pair)이나 객체 형태로 함께 저장합니다.
+  #무방향 그래프: 정점 u와 v가 연결되어 있다면, u의 리스트에 v를 추가하고, v의 리스트에도 u를 추가합니다.
+  #방향 그래프: 정점 u에서 v로 가는 간선만 있다면, u의 리스트에만 v를 추가합니다.
+  #가중치 그래프: 연결된 정점 번호와 함께 간선의 가중치(Cost)를 쌍(Pair)이나 객체 형태로 함께 저장합니다.
 
 def _format(dist):
     return [('INF' if x == INF else x) for x in dist]  #출력 표기를 위한 헬퍼: float('inf') 는 'INF' 로 보여줌
