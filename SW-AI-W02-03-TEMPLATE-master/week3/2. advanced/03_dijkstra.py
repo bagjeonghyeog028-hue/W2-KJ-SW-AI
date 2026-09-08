@@ -34,11 +34,6 @@ def dijkstra(n: int, edges: list, start: int) -> list:
     #edges: (u, v, w) 형식 방향 간선 리스트
     #start: 출발 정점
     #반환: 길이 n 의 거리 리스트 (도달 불가 = float('inf'))
-
-    # TODO: 인접 리스트 graph 구성 (graph[u] = [(v, w), ...])
-    # TODO: dist 를 INF 로 초기화하고 dist[start] = 0
-    # TODO: 우선순위 큐(heapq)로 BFS-like 최단경로 탐색
-    # TODO: dist 반환
     
   #무방향 그래프: 정점 u와 v가 연결되어 있다면, u의 리스트에 v를 추가하고, v의 리스트에도 u를 추가합니다.
   #방향 그래프: 정점 u에서 v로 가는 간선만 있다면, u의 리스트에만 v를 추가합니다.
